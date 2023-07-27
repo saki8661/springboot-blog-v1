@@ -32,3 +32,9 @@ create database blogdb;
 3. 템플릿 user폴더 joinForm, loginForm, updateForm 생성
 4. 템플릿 board폴더 saveForm, detailForm 생성
 5. Controller 화면구현 확인
+
+### 07/27
+
+1. Web 회원가입 요청(username, password, email)
+2. Console에서 응답 뿌리기
+3. HttpServletResponse
