@@ -37,4 +37,13 @@ create database blogdb;
 
 1. Web 회원가입 요청(username, password, email)
 2. Console에서 응답 뿌리기
-3. HttpServletResponse
+
+- 메소드를 찾을 수 있어야한다(joinForm)
+
+### 07/28
+
+1. 서블릿과 파싱이해
+
+- DS에서 파싱 -> Controller
+- HttpServletRequset -> requset객체를 Controller에서 파싱
+- 바디데이터를 버퍼로 받아서 처음부터 파싱
