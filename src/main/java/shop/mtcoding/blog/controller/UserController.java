@@ -5,25 +5,38 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import shop.mtcoding.blog.dto.JoinDTO;
+import shop.mtcoding.blog.repository.UserRepository;
 
 @Controller
 public class UserController {
 
-    // 실무
+    @Autowired
+    private UserRepository userRepository;
+
+    // 실무업글
     @PostMapping("/join")
     public String join(JoinDTO joinDTO) {
         // username=ssar&password=1234&email=ssar@nate.com
-        System.out.println("username : " + joinDTO.getUsername());
-        System.out.println("password : " + joinDTO.getPassword());
-        System.out.println("email : " + joinDTO.getEmail());
-
+        userRepository.save(joinDTO);
         return "redirect:/loginForm";
     }
+
+    // // 실무
+    // @PostMapping("/join")
+    // public String join(JoinDTO joinDTO) {
+    // // username=ssar&password=1234&email=ssar@nate.com
+    // System.out.println("username : " + joinDTO.getUsername());
+    // System.out.println("password : " + joinDTO.getPassword());
+    // System.out.println("email : " + joinDTO.getEmail());
+
+    // return "redirect:/loginForm";
+    // }
 
     // // 정상인
     // @PostMapping("/join")
