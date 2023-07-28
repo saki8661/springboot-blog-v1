@@ -9,18 +9,31 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import shop.mtcoding.blog.dto.JoinDTO;
+
 @Controller
 public class UserController {
 
-    // 정상인
+    // 실무
     @PostMapping("/join")
-    public String join(String username, String password, String email) {
+    public String join(JoinDTO joinDTO) {
         // username=ssar&password=1234&email=ssar@nate.com
-        System.out.println("username : " + username);
-        System.out.println("password : " + password);
-        System.out.println("email : " + email);
+        System.out.println("username : " + joinDTO.getUsername());
+        System.out.println("password : " + joinDTO.getPassword());
+        System.out.println("email : " + joinDTO.getEmail());
+
         return "redirect:/loginForm";
     }
+
+    // // 정상인
+    // @PostMapping("/join")
+    // public String join(String username, String password, String email) {
+    // // username=ssar&password=1234&email=ssar@nate.com
+    // System.out.println("username : " + username);
+    // System.out.println("password : " + password);
+    // System.out.println("email : " + email);
+    // return "redirect:/loginForm";
+    // }
 
     // // 비정상
     // @PostMapping("/join")

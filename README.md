@@ -47,3 +47,5 @@ create database blogdb;
 - DS에서 파싱 -> Controller
 - HttpServletRequset -> requset객체를 Controller에서 파싱
 - 바디데이터를 버퍼로 받아서 처음부터 파싱
+
+2. 실무에서는 DTO활용
