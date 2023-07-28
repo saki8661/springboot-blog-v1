@@ -24,11 +24,11 @@ public class User {
     // 테이블전략
     private Integer id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20, unique = true)
     private String username;
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20, unique = true)
     private String password;
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20, unique = true)
     private String email;
 
 }
