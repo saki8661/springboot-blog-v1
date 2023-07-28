@@ -23,7 +23,21 @@ public class UserController {
     @PostMapping("/join")
     public String join(JoinDTO joinDTO) {
         // username=ssar&password=1234&email=ssar@nate.com
-        userRepository.save(joinDTO);
+
+        // validation check (유효성 검사)
+        if (joinDTO.getUsername() == null || joinDTO.getUsername().isEmpty()) {
+            return "redirect:/40x";
+
+        }
+        if (joinDTO.getPassword() == null || joinDTO.getPassword().isEmpty()) {
+            return "redirect:/40x";
+
+        }
+        if (joinDTO.getEmail() == null || joinDTO.getEmail().isEmpty()) {
+            return "redirect:/40x";
+
+        }
+        userRepository.save(joinDTO); // 핵심 기능
         return "redirect:/loginForm";
     }
 
