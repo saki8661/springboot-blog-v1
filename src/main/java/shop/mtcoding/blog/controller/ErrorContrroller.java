@@ -11,4 +11,9 @@ public class ErrorContrroller {
         return "error/ex40x";
     }
 
+    @GetMapping("/50x")
+    public String ex50x() {
+        return "error/ex50x";
+    }
+
 }
