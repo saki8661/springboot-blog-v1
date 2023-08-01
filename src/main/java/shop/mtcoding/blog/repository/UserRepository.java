@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import shop.mtcoding.blog.dto.JoinDTO;
+import shop.mtcoding.blog.dto.LoginDTO;
+import shop.mtcoding.blog.model.User;
 
 // BoardContoller, UserController, UserRepository(내가 띄움)
 // EntityManager, HttpSession(스프링이 띄워줌)
@@ -16,6 +18,15 @@ public class UserRepository {
 
     @Autowired
     private EntityManager em;
+
+    @Transactional
+    public User findByUsernameAndPassword(LoginDTO loginDTO) {
+        Query query = em.createNativeQuery("select * from user_tb where username=:username and password=:password",
+                User.class);
+        query.setParameter("username", loginDTO.getUsername());
+        query.setParameter("password", loginDTO.getPassword());
+        return (User) query.getSingleResult();
+    }
 
     @Transactional
     public void save(JoinDTO joinDTO) {
