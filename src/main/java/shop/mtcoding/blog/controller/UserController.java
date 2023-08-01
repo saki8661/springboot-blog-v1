@@ -26,16 +26,16 @@ public class UserController {
     @Autowired
     private HttpSession session; // request는 가방, session은 서랍
 
-    @ResponseBody
-    @GetMapping("/test/login")
-    public String testLogin() {
-        User sessionUser = (User) session.getAttribute("sessionUser");
-        if (sessionUser == null) {
-            return "로그인이 되지 않았습니다";
-        } else {
-            return "로그인 됨 : " + sessionUser.getUsername();
-        }
-    }
+    // @ResponseBody
+    // @GetMapping("/test/login")
+    // public String testLogin() {
+    // User sessionUser = (User) session.getAttribute("sessionUser");
+    // if (sessionUser == null) {
+    // return "로그인이 되지 않았습니다";
+    // } else {
+    // return "로그인 됨 : " + sessionUser.getUsername();
+    // }
+    // }
 
     @PostMapping("/login")
     public String login(LoginDTO loginDTO) {
@@ -56,7 +56,7 @@ public class UserController {
             session.setAttribute("sessionUser", user);
             return "redirect:/";
         } catch (Exception e) {
-            return "redirect:/exLogin";
+            return "redirect:/exLoginErr";
         }
     }
 
@@ -80,11 +80,11 @@ public class UserController {
         }
         try {
             userRepository.save(joinDTO); // 핵심 기능
-            return "redirect:/loginForm";
+
         } catch (Exception e) {
             return "redirect:/50x";
         }
-
+        return "redirect:/loginForm";
     }
 
     // // 실무

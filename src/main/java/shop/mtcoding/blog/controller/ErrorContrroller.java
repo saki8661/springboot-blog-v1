@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ErrorContrroller {
 
-    @GetMapping("/exLogin")
+    @GetMapping("/exLoginErr")
     public String exLogin() {
-        return "error/exLogin";
+        return "error/exLoginErr";
     }
 
     @GetMapping("/40x")
