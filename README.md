@@ -78,3 +78,5 @@ create database blogdb;
    - 로그아웃(세션 날리기)
 
 4. WriteDTO
+
+5. 게시글목록보기
