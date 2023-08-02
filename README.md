@@ -96,3 +96,10 @@ create database blogdb;
 
    - 쿼리스트링과 @PathVariable의 차이
    - 권한체크
+
+3. 글삭제
+
+   - @PathVariable 값 받기
+   - 인증검사
+   - 권한검사
+   - 모델에 접근해서 삭제

@@ -33,7 +33,7 @@ public class BoardRepository {
         return count.intValue();
     }
 
-    // localhost:8080?page=o
+    // localhost:8080?page=oselect * from board_tb where id = 1
     public List<Board> findAll(int page) {
         final int SIZE = 3;
         Query query = em.createNativeQuery("select * from board_tb order by id desc limit :page, :size", Board.class);
@@ -58,5 +58,12 @@ public class BoardRepository {
         query.setParameter("id", id);
         Board board = (Board) query.getSingleResult();
         return board;
+    }
+
+    @Transactional
+    public void deleteById(Integer id) {
+        Query query = em.createNativeQuery("delete from board_tb where id = :id");
+        query.setParameter("id", id);
+        query.executeUpdate();
     }
 }
