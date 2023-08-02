@@ -51,4 +51,12 @@ public class BoardRepository {
         query.setParameter("userId", userId);
         query.executeUpdate();
     }
+
+    @Transactional
+    public Board findById(Integer id) {
+        Query query = em.createNativeQuery("select * from board_tb where id = :id", Board.class);
+        query.setParameter("id", id);
+        Board board = (Board) query.getSingleResult();
+        return board;
+    }
 }

@@ -88,8 +88,19 @@ public class BoardController {
     // localhost:8080/board/1
     // localhost:8080/board/50
     @GetMapping("/board/{id}")
-    public String detailForm(@PathVariable Integer id) {
-        return "board/detailForm";
+    public String detailForm(@PathVariable Integer id, HttpServletRequest request) { // C
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        Board board = boardRepository.findById(id); // M(모델)
+
+        boolean pageOwner = false;
+        if (sessionUser != null) {
+            // 권한체크
+            pageOwner = sessionUser.getId() == board.getUser().getId();
+        }
+
+        request.setAttribute("board", board);
+        request.setAttribute("pageOwner", pageOwner);
+        return "board/detailForm"; // V(뷰)
     }
 
 }

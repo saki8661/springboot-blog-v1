@@ -89,4 +89,10 @@ create database blogdb;
 
 1. 페이징 쿼리
 
-   - 복습
+   - 페이징 쿼리 복습
+   - 페이징 쿼리 last
+
+2. 상세보기
+
+   - 쿼리스트링과 @PathVariable의 차이
+   - 권한체크
