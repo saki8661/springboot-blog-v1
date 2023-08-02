@@ -103,3 +103,9 @@ create database blogdb;
    - 인증검사
    - 권한검사
    - 모델에 접근해서 삭제
+
+4. 글수정
+
+   - 수정하기 들어갔을 때 수정전 내용이 화면에 표시 되어야함
+   - Controller에 UpdateDTO담아서 뿌리기
+   - update, updateForm 차이
