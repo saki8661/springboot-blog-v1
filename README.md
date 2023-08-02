@@ -71,6 +71,8 @@ create database blogdb;
 2. LoginDTO
 
    - 로그인은 POST요청
+   - 파일 복사 붙여넣기 할 때
+     같은 파일로 인식하는 경우가 있어서 주의!
 
 3. 세션
 
@@ -80,3 +82,11 @@ create database blogdb;
 4. WriteDTO
 
 5. 게시글목록보기
+
+   - 페이징 쿼리
+
+### 08/02
+
+1. 페이징 쿼리
+
+   - 복습
