@@ -100,8 +100,8 @@ public class BoardController {
         }
         boolean last = totalPage - 1 == page;
 
-        System.out.println("테스트 : " + boardList.size());
-        System.out.println("테스트 : " + boardList.get(0).getTitle());
+        // System.out.println("테스트 : " + boardList.size());
+        // System.out.println("테스트 : " + boardList.get(0).getTitle());
 
         request.setAttribute("boardList", boardList);
         request.setAttribute("prevPage", page - 1);
