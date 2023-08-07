@@ -109,3 +109,12 @@ create database blogdb;
    - 수정하기 들어갔을 때 수정전 내용이 화면에 표시 되어야함
    - Controller에 UpdateDTO담아서 뿌리기
    - update, updateForm 차이
+
+### 08/07
+
+1. Ajax통신
+
+   - DOM으로 부터 값 가져오기
+   - 통신하기
+   - 파싱하기
+   - 상태코드 확인
