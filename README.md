@@ -119,7 +119,7 @@ create database blogdb;
    - 파싱하기
    - 상태코드 확인
 
-   ### 08/08
+### 08/08
 
 1. Reply
 
@@ -127,8 +127,13 @@ create database blogdb;
    - Controller와 Rrpository연결
    - DB에 insert
 
-1. 게시글 상세보기 - 댓글 리스트 동적쿼리
+2. 게시글 상세보기 - 댓글 리스트 동적쿼리
 
    - build.gradle QLRM추가
    - DB 조인쿼리 활용
    - Mustache 문법활용
+
+3. 댓글삭제
+
+   - 댓글삭제 후 글 목록보기 페이지로 넘어간다
+   - 댓글삭제 후 해당 페이지에 남아있기 구현하기

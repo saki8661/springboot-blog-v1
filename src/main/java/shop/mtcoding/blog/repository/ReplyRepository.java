@@ -40,4 +40,11 @@ public class ReplyRepository {
 
     }
 
+    @Transactional
+    public void deleteByReplyId(Integer id) {
+        Query query = em.createNativeQuery("delete from reply_tb where id = :id");
+        query.setParameter("id", id);
+        query.executeUpdate();
+    }
+
 }
