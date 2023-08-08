@@ -10,8 +10,3 @@ insert into reply_tb(comment, user_id, board_id) values('안녕', 1, 2);
 insert into reply_tb(comment, user_id, board_id) values('안녕', 1, 3);
 insert into reply_tb(comment, user_id, board_id) values('안녕', 1, 4);
 insert into reply_tb(comment, user_id, board_id) values('안녕', 1, 5);
-insert into reply_tb(comment, user_id, board_id) values('감자', 2, 1);
-insert into reply_tb(comment, user_id, board_id) values('감자', 2, 2);
-insert into reply_tb(comment, user_id, board_id) values('감자', 2, 3);
-insert into reply_tb(comment, user_id, board_id) values('감자', 2, 4);
-insert into reply_tb(comment, user_id, board_id) values('감자', 2, 5);

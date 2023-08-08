@@ -10,6 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 import shop.mtcoding.blog.dto.ReplyWriteDTO;
 import shop.mtcoding.blog.dto.WriteDTO;
 
+// IoC컨테이너 컴파운트 스캔 목록
+// UserController, BoardController, ReplyController, ErrorController
+// UserRepository, BoardRepository, ReplyRepository - 내가 띄움
+// EntityManager, HttpSession - Spring이 띄움
 @Repository
 public class ReplyRepository {
 
@@ -23,10 +27,6 @@ public class ReplyRepository {
         query.setParameter("comment", replyWriteDTO.getComment());
         query.setParameter("userId", userId);
         query.setParameter("boardId", replyWriteDTO.getBoardId());
-
-        System.out.println("테스트 유저 아이디 : " + userId);
-        System.out.println("테스트 보드 : " + replyWriteDTO.getBoardId());
-        System.out.println("테스트 내용 : " + replyWriteDTO.getComment());
         query.executeUpdate();
 
     }

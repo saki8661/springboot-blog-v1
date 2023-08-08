@@ -21,10 +21,8 @@ public class ReplyController {
 
     @PostMapping("/reply/save")
     public String save(ReplyWriteDTO replyWriteDTO) {
-        // comment 유효성 검사
-        // validation check (유효성 검사)
-        if (replyWriteDTO.getComment() == null ||
-                replyWriteDTO.getComment().isEmpty()) {
+        // comment, boardId 유효성 검사
+        if (replyWriteDTO.getComment() == null || replyWriteDTO.getComment().isEmpty()) {
             return "redirect:/40x";
         }
         if (replyWriteDTO.getBoardId() == null) {
@@ -34,7 +32,7 @@ public class ReplyController {
         // 인증 검사
         User sessionUser = (User) session.getAttribute("sessionUser");
         if (sessionUser == null) {
-            return "redirect:/board"; // 401 인증
+            return "redirect:/loginForm"; // 401 인증
         }
 
         // 댓글 쓰기

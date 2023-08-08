@@ -122,3 +122,7 @@ create database blogdb;
    ### 08/08
 
 1. Reply
+
+   - 테이블, DTO만들기
+   - Controller와 Rrpository연결
+   - DB에 insert
