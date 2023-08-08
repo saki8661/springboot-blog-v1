@@ -126,3 +126,9 @@ create database blogdb;
    - 테이블, DTO만들기
    - Controller와 Rrpository연결
    - DB에 insert
+
+1. 게시글 상세보기 - 댓글 리스트 동적쿼리
+
+   - build.gradle QLRM추가
+   - DB 조인쿼리 활용
+   - Mustache 문법활용
