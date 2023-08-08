@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import shop.mtcoding.blog.dto.BoardDetailDTO;
-import shop.mtcoding.blog.dto.ReplyDeleteDTO;
 import shop.mtcoding.blog.dto.UpdateDTO;
 import shop.mtcoding.blog.dto.WriteDTO;
 import shop.mtcoding.blog.model.Board;
@@ -106,7 +105,7 @@ public class BoardController {
     }
 
     @PostMapping("/reply/{id}/delete")
-    public String deleteReply(@PathVariable ReplyDeleteDTO replyDeleteDTO) { // 1. PathVariable 값 받기
+    public String deleteReply(@PathVariable Integer id, Integer boardId) { // 1. PathVariable 값 받기
 
         User sessionUser = (User) session.getAttribute("sessionUser");
         if (sessionUser == null) {
@@ -114,15 +113,15 @@ public class BoardController {
         }
 
         // 3. 권한검사
-        Board board = boardRepository.findById(replyDeleteDTO.getReplyId());
+        Board board = boardRepository.findById(id);
         if (board.getUser().getId() != sessionUser.getId()) {
             return "redirect:/40x"; // 403 권한없음
         }
 
         // 4. 모델에 접근해서 석제
 
-        replyRepository.deleteByReplyId(replyDeleteDTO.getReplyId());
-        return "redirect:/board/" + replyDeleteDTO.getBoardId();
+        replyRepository.deleteByReplyId(id);
+        return "redirect:/board/" + boardId;
     }
 
     // localhost:8080?page=1
