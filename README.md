@@ -118,3 +118,7 @@ create database blogdb;
    - 통신하기
    - 파싱하기
    - 상태코드 확인
+
+   ### 08/08
+
+1. Reply
