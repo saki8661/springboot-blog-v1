@@ -23,6 +23,12 @@ public class ReplyRepository {
     @Autowired
     private EntityManager em;
 
+    public Reply findById(int id) {
+        Query query = em.createNativeQuery("select * from reply_tb where id = :id", Reply.class);
+        query.setParameter("id", id);
+        return (Reply) query.getResultList();
+    }
+
     public List<Reply> finfByBoardId(Integer boardId) {
         Query query = em.createNativeQuery("select * from reply_tb where board_id = :boardId", Reply.class);
         query.setParameter("boardId", boardId);

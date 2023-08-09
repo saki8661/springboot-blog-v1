@@ -104,22 +104,6 @@ public class BoardController {
         return "redirect:/";
     }
 
-    @PostMapping("/reply/{id}/delete")
-    public String deleteReply(@PathVariable Integer id, Integer boardId) { // 1. PathVariable 값 받기
-
-        User sessionUser = (User) session.getAttribute("sessionUser");
-        if (sessionUser == null) {
-            return "redirect:/loginForm"; // 401 인증
-        }
-
-        // 3. 권한검사
-
-        // 4. 모델에 접근해서 석제
-
-        replyRepository.deleteByReplyId(id);
-        return "redirect:/board/" + boardId;
-    }
-
     // localhost:8080?page=1
     @GetMapping({ "/", "/board" })
     public String index(
