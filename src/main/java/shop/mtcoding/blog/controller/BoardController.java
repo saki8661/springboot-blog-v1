@@ -113,10 +113,6 @@ public class BoardController {
         }
 
         // 3. 권한검사
-        Board board = boardRepository.findById(id);
-        if (board.getUser().getId() != sessionUser.getId()) {
-            return "redirect:/40x"; // 403 권한없음
-        }
 
         // 4. 모델에 접근해서 석제
 
@@ -182,27 +178,53 @@ public class BoardController {
         return "board/saveForm";
     }
 
+    // // localhost:8080/board/1
+    // // localhost:8080/board/50
+    // @GetMapping("/board/{id}")
+    // public String detailForm(@PathVariable Integer id, HttpServletRequest
+    // request) { // C
+    // User sessionUser = (User) session.getAttribute("sessionUser");
+    // List<BoardDetailDTO> dtos = boardRepository.findByIdJoinReply(id);
+
+    // boolean pageOwner = false;
+    // if (sessionUser != null) {
+    // // System.out.println("테스트 세션 ID : "+ sessionUser.getId());
+    // // System.out.println("테스트 세션 board.getUser().getId() : " +
+    // // board.getUser().getId());
+    // // pageOwner = sessionUser.getId() == board.getUser().getId();
+    // pageOwner = sessionUser.getId() == dtos.get(0).getBoardUserId();
+    // // System.out.println("테스트 : pageOwner : " + pageOwner);
+
+    // }
+
+    // request.setAttribute("dtos", dtos);
+    // request.setAttribute("pageOwner", pageOwner);
+    // return "board/detailForm"; // V(뷰)
+    // }
+
     // localhost:8080/board/1
     // localhost:8080/board/50
     @GetMapping("/board/{id}")
-    public String detailForm(@PathVariable Integer id, HttpServletRequest request) { // C
-        User sessionUser = (User) session.getAttribute("sessionUser");
-        List<BoardDetailDTO> dtos = boardRepository.findByIdJoinReply(id);
+    public String detail(@PathVariable Integer id, HttpServletRequest request) { // C
+        User sessionUser = (User) session.getAttribute("sessionUser"); // 세션접근
+        List<BoardDetailDTO> dtos = null;
+        if (sessionUser == null) {
+            dtos = boardRepository.findByIdJoinReply(id, null);
+        } else {
+            dtos = boardRepository.findByIdJoinReply(id, sessionUser.getId());
+        }
 
         boolean pageOwner = false;
         if (sessionUser != null) {
-            // System.out.println("테스트 세션 ID : "+ sessionUser.getId());
+            // System.out.println("테스트 세션 ID : " + sessionUser.getId());
             // System.out.println("테스트 세션 board.getUser().getId() : " +
             // board.getUser().getId());
-            // pageOwner = sessionUser.getId() == board.getUser().getId();
             pageOwner = sessionUser.getId() == dtos.get(0).getBoardUserId();
             // System.out.println("테스트 : pageOwner : " + pageOwner);
-
         }
 
         request.setAttribute("dtos", dtos);
         request.setAttribute("pageOwner", pageOwner);
-        return "board/detailForm"; // V(뷰)
+        return "board/detailForm"; // V
     }
-
 }
