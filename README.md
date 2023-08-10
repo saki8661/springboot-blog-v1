@@ -155,3 +155,20 @@ create database blogdb;
    - 패스워드 BCrypt 설정
 
 4. 회원정보수정하기
+
+### 08/10
+
+1. 오타 오류수정
+
+   - finfById -> findById
+
+2. 디버깅
+
+   - 내가 어디서 오류가 터진문제인지 인식
+   - 로그를 하나씩 찍어보기
+   - 로그 기록을 보면서 체크
+   - ReplyRepository문제
+
+3. 회원정보수정
+
+   -

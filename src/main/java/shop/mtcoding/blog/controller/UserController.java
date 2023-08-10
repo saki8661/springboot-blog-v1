@@ -173,7 +173,14 @@ public class UserController {
     }
 
     @GetMapping("/user/updateForm")
-    public String updateForm() {
+    public String updateForm(HttpServletRequest request) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        if (sessionUser == null) {
+            return "redirect:/loginForm"; // 401
+        }
+
+        User user = userRepository.findByUsername(sessionUser.getUsername());
+        request.setAttribute("user", user);
 
         return "/user/updateForm";
     }
