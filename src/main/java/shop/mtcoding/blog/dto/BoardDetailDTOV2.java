@@ -24,7 +24,8 @@ public class BoardDetailDTOV2 {
         this.content = dtos.get(0).getBoardContent();
         this.userId = dtos.get(0).getBoardUserId();
         this.pageOwner = userId == sessionUserId;
-        this.replys = dtos.stream().map(t -> new ReplyDTO(t, sessionUserId)).collect(Collectors.toList());
+        this.replys = dtos.stream().map(t -> new ReplyDTO(t,
+                sessionUserId)).collect(Collectors.toList());
     }
 
     @Getter

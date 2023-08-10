@@ -26,10 +26,10 @@ public class ReplyRepository {
     public Reply findById(int id) {
         Query query = em.createNativeQuery("select * from reply_tb where id = :id", Reply.class);
         query.setParameter("id", id);
-        return (Reply) query.getResultList();
+        return (Reply) query.getSingleResult();
     }
 
-    public List<Reply> finfByBoardId(Integer boardId) {
+    public List<Reply> findByBoardId(Integer boardId) {
         Query query = em.createNativeQuery("select * from reply_tb where board_id = :boardId", Reply.class);
         query.setParameter("boardId", boardId);
         return query.getResultList();

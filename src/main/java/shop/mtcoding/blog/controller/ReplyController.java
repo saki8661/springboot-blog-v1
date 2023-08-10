@@ -45,25 +45,33 @@ public class ReplyController {
 
     @PostMapping("/reply/{id}/delete")
     public String deleteReply(@PathVariable Integer id, Integer boardId) { // 1. PathVariable 값 받기
+        System.out.println("테스트id : " + id);
+        System.out.println("테스트boardId : " + boardId);
         // 유효성 검사
         if (boardId == null) {
-            return "redirect:/loginForm";
+            return "redirect:/40x";
         }
+        System.out.println("테스트:1");
 
         // 인증체크
         User sessionUser = (User) session.getAttribute("sessionUser");
         if (sessionUser == null) {
-            return "redirect:/loginForm"; // 401 인증
+            return "redirect:/loginForm";
         }
+        System.out.println("테스트:2");
 
         // 권한체크
         Reply reply = replyRepository.findById(id);
         if (reply.getUser().getId() != sessionUser.getId()) {
             return "redirect:/40x"; // 403
         }
+        System.out.println("테스트:3");
 
         // 핵심로직
         replyRepository.deleteByReplyId(id);
+        System.out.println("테스트:4");
+
         return "redirect:/board/" + boardId;
+
     }
 }

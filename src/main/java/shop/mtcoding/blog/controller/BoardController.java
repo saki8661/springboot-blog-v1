@@ -37,7 +37,7 @@ public class BoardController {
     @ResponseBody
     @GetMapping("/test/reply")
     public List<Reply> test2() {
-        List<Reply> replys = replyRepository.finfByBoardId(1);
+        List<Reply> replys = replyRepository.findByBoardId(1);
         return replys;
     }
 

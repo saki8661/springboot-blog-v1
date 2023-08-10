@@ -68,7 +68,7 @@ public class UserController {
                 session.setAttribute("sessionUser", user);
                 return "redirect:/";
             } else {
-                return "redirect:/exLoginErr";
+                return "redirect:/loginForm";
             }
         } catch (Exception e) {
             return "redirect:/exLoginErr";
