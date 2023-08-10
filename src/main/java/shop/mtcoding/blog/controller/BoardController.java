@@ -104,10 +104,37 @@ public class BoardController {
         return "redirect:/";
     }
 
+    // // localhost:8080?page=1
+    // @GetMapping({ "/", "/board" })
+    // public String index(
+    // @RequestParam(defaultValue = "0") Integer page,
+    // HttpServletRequest request) {
+    // // 1. 유효성 검사 X
+    // // 2. 인증검사 X
+
+    // List<Board> boardList = boardRepository.findAll(page); // page = 1
+    // int totalCount = boardRepository.count(); // totalCount = 5
+    // int totalPage = totalCount / 3; // totalPage = 1
+    // if (totalCount % 3 > 0) {
+    // totalPage = totalPage + 1; // totalPage = 2
+    // }
+    // boolean last = totalPage - 1 == page;
+    // // System.out.println("테스트 : " + boardList.size());
+    // // System.out.println("테스트 : " + boardList.get(0).getTitle());
+    // request.setAttribute("boardList", boardList);
+    // request.setAttribute("prevPage", page - 1);
+    // request.setAttribute("nextPage", page + 1);
+    // request.setAttribute("first", page == 0 ? true : false);
+    // request.setAttribute("last", last);
+    // request.setAttribute("toalPage", totalPage);
+    // request.setAttribute("toalCount", totalCount);
+    // return "index";
+    // }
+
     // localhost:8080?page=1
     @GetMapping({ "/", "/board" })
     public String index(
-            @RequestParam(defaultValue = "") String keyword,
+            String keyword,
             @RequestParam(defaultValue = "0") Integer page,
             HttpServletRequest request) {
         // 1. 유효성 검사 X
@@ -115,11 +142,11 @@ public class BoardController {
 
         List<Board> boardList = null;
         int toalCount = 0;
+        request.setAttribute("keyword", keyword);
         if (keyword == null) {
             boardList = boardRepository.findAll(page); // page = 1
             toalCount = boardRepository.count();
         } else {
-            request.setAttribute("keyword", keyword);
             boardList = boardRepository.findAll(page, keyword); // page = 1
             toalCount = boardRepository.count();
         }

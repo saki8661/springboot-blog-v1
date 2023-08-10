@@ -5,7 +5,8 @@
 
     <div class="mb-2 d-flex justify-content-end">
         <form class="d-flex" action="/" method="get">
-            <input class="form-control me-2" type="text" name="keyword" placeholder="Serch" required>
+            <input class="form-control me-2" type="text" name="keyword" placeholder="Search" pattern=".*\S+.*"
+                title="공백을 포함한 문자열을 입력하세요." required>
             <button class="btn btn-primary" type="submit">Search</button>
         </form>
     </div>
@@ -22,9 +23,11 @@
 
     <!--disabled-->
     <ul class="pagination d-flex justify-content-center">
-        <li class="page-item {{#first}}disabled{{/first}}"><a class="page-link" href="?page={{prevPage}}">Previous</a>
+        <li class="page-item {{#first}}disabled{{/first}}">
+            <a class="page-link" href="?page={{prevPage}}{{#keyword}}&keyword={{keyword}}{{/keyword}}">Previous</a>
         </li>
-        <li class="page-item {{#last}}disabled{{/last}}"><a class="page-link" href="?page={{nextPage}}">Next</a></li>
+        <li class="page-item {{#last}}disabled{{/last}}">
+            <a class="page-link" href="?page={{nextPage}}{{#keyword}}&keyword={{keyword}}{{/keyword}}">Next</a>
     </ul>
 
 </div>
