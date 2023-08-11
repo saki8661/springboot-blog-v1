@@ -89,7 +89,10 @@ public class UserController {
             return "redirect:/40x";
         }
         // DB에 해당 username이 있는지 체크해보기
+        // JPA (기본 메서드 활용, 기술에 대한 원리 공부)
         User user = userRepository.findByUsername(joinDTO.getUsername());
+
+        // 에러에 대한 처리를 담당하는 클래스 하나 생성 0> 위임 -> 자바스크립트로 변경
         if (user != null) {
             return "redirect:/50x";
         }
